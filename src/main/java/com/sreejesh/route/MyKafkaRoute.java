@@ -13,7 +13,7 @@ public class MyKafkaRoute extends RouteBuilder {
 
 		from("timer://myTimer?repeatCount=1")
 		.setHeader("startTime", simple("${date:now:yyyyMMdd-HH:mm:ss.SSS}"))
-		.loop(1000)
+		.loop(10000)
 		.setHeader("Header-CamelLoopIndex", simple("${exchangeProperty.CamelLoopIndex}"))
 		.setBody(simple("Body-CamelLoopIndex:${exchangeProperty.CamelLoopIndex}"))
 		.log("***** STEP-10:${body.class.name}")
